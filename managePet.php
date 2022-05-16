@@ -16,16 +16,20 @@ echo "<div>";
 echo "<h2>Manage your pets:</h2>";
 if (count($pets) > 0){
   foreach ($pets as $pet){
+    echo "<div class='box'>";
     echo "$pet[name]";
     echo '<form action="removePet.php" method="post">';
     echo "<input type='hidden' name='id' value=$pet[id]>";
     echo '<input type="submit" value="delete">';
     echo '</form>';
+    echo "</div>";
+    echo "<br>";
   }
 }
 else{
-  echo "You have no pets!";
+  echo "<div class='content'>You have no pets!</div>";
 }
 echo "</div>";
+pageEnd()
 ?>
 </html>
