@@ -1,0 +1,6 @@
+DROP TABLE if exists pets;
+CREATE TABLE pets(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  owner_id INT NOT NULL,
+  name TEXT NOT NULL
+);

@@ -1,9 +1,7 @@
 <?php
-$dir = 'sqlite:/home/runner/PetSimulator/database.sqlite';
-$dbh  = new PDO($dir) or die("cannot open the database");
+include "init.php";
 
-$dbh->query("DELETE FROM pets WHERE id = $_POST[id]");
-
+removePet($_POST['id']);
 header("location:/");
 
 ?>
