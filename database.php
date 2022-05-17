@@ -8,10 +8,16 @@
     $result = $dbh->query("SELECT id, name FROM pets WHERE owner_id = $user");
     return $result->fetchAll();
   }
-  function createPet($name) {
+  function getPetInfo($id) {
+    global $dbh;
+    $result = $dbh->query("SELECT * FROM pets WHERE id=$id");
+    return $result->fetchAll();
+  }
+  function createPet($name,$type) {
     global $dbh;
     $user = getUserId();
-    $result = $dbh->query("INSERT INTO pets (owner_id, name) VALUES ($user, '$name')");
+    $date = date("d.m.Y");
+    $result = $dbh->query("INSERT INTO pets (owner_id, name, type, birthday) VALUES ($user, '$name','$type','$date')");
     return true; //of course it went in, why wouldn't it?
   }
   function removePet($id){

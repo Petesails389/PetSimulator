@@ -1,35 +1,22 @@
-<!doctype html>
-
-<html>
 <?php
 include "init.php";
 
 $user = getUserId();
 $username = getUser();
-$pets = getPets();
-$dbh = null;
+$petId = $_GET['id'];
+$petInfo = getPetInfo($petId)[0];
 
 pageHeader();
-echo "<body>";
 pageStart();
+
+echo "<h2>You Are Currently With $petInfo[name]!</h2>";
 echo "<div>";
-echo "<h2>Manage your pets:</h2>";
-if (count($pets) > 0){
-  foreach ($pets as $pet){
-    echo "<div class='box'>";
-    echo "$pet[name]";
-    echo '<form action="removePet.php" method="post">';
-    echo "<input type='hidden' name='id' value=$pet[id]>";
-    echo '<input type="submit" value="delete">';
-    echo '</form>';
-    echo "</div>";
-    echo "<br>";
-  }
-}
-else{
-  echo "<div class='content'>You have no pets!</div>";
-}
+echo "$petInfo[name] is a $petInfo[type].";
+echo "<br>";
+echo "Their birthday is $petInfo[birthday].";
 echo "</div>";
-pageEnd()
+
+pageEnd();
+$dbh = null;
+
 ?>
-</html>

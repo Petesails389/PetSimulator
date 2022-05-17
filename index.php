@@ -7,7 +7,7 @@ $pets = getPets();
 $dbh = null;
 
 if (isLoggedIn()){
-  header("location:/managePet.php");
+  header("location:/petList.php");
   exit;
 } else{
   pageHeader();
