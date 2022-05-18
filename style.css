@@ -44,7 +44,7 @@ button.noBox {
   font-size: 12;
   border-style: none;
   text-decoration: underline;
-  background:#000814;
+  background:#001D3D;
 }
 
 button.noBox:hover, button.noBox:active {
@@ -78,6 +78,7 @@ button.noBox:hover, button.noBox:active {
 }
 
 .box {
+  background:#001D3D;
   padding: 5px;
   border-style: solid;
   border-width: 2px;
@@ -98,3 +99,8 @@ button.noBox:hover, button.noBox:active {
   margin-left: 0px;
   padding-left: 0px;
 }
+
+.danger {
+  border-color: #D23202;
+}
+

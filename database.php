@@ -11,13 +11,15 @@
   function getPet($id) {
     global $dbh;
     $result = $dbh->query("SELECT * FROM pets WHERE id=$id");
-    return $result->fetchAll()[0];
+    return $result->fetch();
   }
   function createPet($name,$type) {
     global $dbh;
     $user = getUserId();
-    $date = date("d.m.Y");
+    $date = time();
     $result = $dbh->query("INSERT INTO pets (owner_id, name, type, birthday) VALUES ($user, '$name','$type','$date')");
+    $petId = $dbh->query("SELECT MAX(id) FROM pets")->fetch()[0];
+    addAction('feed', $petId);
     return true; //of course it went in, why wouldn't it?
   }
   function renamePet($id,$name) {
@@ -42,4 +44,26 @@
       return false;
     }
   }
+  function addAction($type,$id){
+    global $dbh;
+    $owner = $dbh->query("SELECT owner_id FROM pets WHERE id=$id");
+    $user = getUserId();
+    if ($user == $owner) {
+      $dateTime = time();
+      $result = $dbh->query("INSERT INTO actions (pet_id, action_type, date_time) VALUES ($id, '$type', '$dateTime')");
+      return true; //as always it worked
+    } else {
+      return false;
+    }
+  }
+  function getActions($type,$id) {
+    global $dbh;
+    $result = $dbh->query("SELECT * FROM actions WHERE pet_id=$id AND action_type='$type'");
+    return $result->fetchAll();
+  }
+function getLastActionDate($type,$id) {
+  global $dbh;
+  $result = $dbh->query("SELECT MAX(date_time) FROM actions WHERE pet_id=$id AND action_type='$type'");
+  return $result->fetch();
+}
 ?>

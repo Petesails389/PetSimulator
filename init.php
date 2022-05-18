@@ -1,6 +1,7 @@
 <?php
 include "database.php";
 include "login.php";
+include "statistics.php";
 
 function pageHeader() {
   include "header.html";

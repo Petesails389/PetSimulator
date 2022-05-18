@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   echo "<div>";
   echo "<h2>Create a new pet:</h2>";
   echo '<form action="createPet.php" method="post">';
-  echo "<input type='text' name='petName' value='Pet Name'>";
+  echo "<input type='text' name='petName' placeholder='Pet Name'>";
   echo "<select name='type' value='Type of Pet'>";
   echo "<option value='dog'>Dog</option>";
   echo "<option value='cat'>Cat</option>";
