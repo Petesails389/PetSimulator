@@ -16,15 +16,32 @@ echo "<div>";
 echo "<h2>Your Pets:</h2>";
 if (count($pets) > 0){
   foreach ($pets as $pet){
-    echo "<div class='section'>";
-    echo '<form action="managePet.php" method="get">';
-    echo "<input type='hidden' name='id' value=$pet[id]>";
-    echo "<input type='submit' value='$pet[name]''>";
+    echo "<div class='box'>";
+    echo "<div class='flex'>";
+    echo "<h3>$pet[name]</h3>";
+    echo "<button id='lable$pet[id]' class='noBox' type='button' onclick='togglePetDetails($pet[id])'>more</button>";
+    // echo '<form action="petInfo.php" method="get">';
+    // echo "<input type='hidden' name='id' value=$pet[id]>";
+    // echo "<input type='submit' value='Manage''>";
+    // echo '</form>';
+    echo "</div>";
+    echo "<div class='details' id='$pet[id]'>";
+    echo "<h4>Info:</h4>";
+    echo "<div>$pet[name] is a $pet[type].</div>";
+    echo "<div>$pet[name]'s birthday is $pet[birthday].</div>";
+    echo "<br>";
+    echo "<h4>Actions:</h4>";
+    echo "<div class='flex'>";
+    echo '<form  action="renamePet.php" method="get">';
+    echo "<input  type='hidden' name='id' value=$pet[id]>";
+    echo '<input  type="submit" value="Rename">';
     echo '</form>';
     echo '<form  action="removePet.php" method="post">';
     echo "<input  type='hidden' name='id' value=$pet[id]>";
     echo '<input  type="submit" value="Delete">';
     echo '</form>';
+    echo "</div>";
+    echo "</div>";
     echo "</div>";
     echo "<br>";
   }

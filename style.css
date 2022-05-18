@@ -9,11 +9,14 @@ body {
   font-family: Arial, sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6, div{
+h1, h2, h3, h4, h5, h6{
+  margin: 5px;
+}
+div {
   margin: 5px;
 }
 
-input, select {
+input, select, button {
   background:#003566;
   border-color: #FFD60A;
   border-style: solid;
@@ -35,6 +38,17 @@ a:link, a:visited {
 a:hover, a:active {
   color: #FFD60A;
   background:#001D3D;
+}
+
+button.noBox {
+  font-size: 12;
+  border-style: none;
+  text-decoration: underline;
+  background:#000814;
+}
+
+button.noBox:hover, button.noBox:active {
+  color: #FFD60A;
 }
 
 .header {
@@ -63,12 +77,24 @@ a:hover, a:active {
   text-decoration: none;
 }
 
-.section {
-  display: flex;
-  flex-direction: row;
+.box {
   padding: 5px;
   border-style: solid;
   border-width: 2px;
   border-color: #FFD60A;
   margin: 5px;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  margin: 0px;
+}
+
+.details {
+  display: none;
+  margin-left: 0px;
+  padding-left: 0px;
 }
