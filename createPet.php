@@ -12,10 +12,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   echo '<form action="createPet.php" method="post">';
   echo "<input type='text' name='petName' placeholder='Pet Name'>";
   echo "<select name='type' value='Type of Pet'>";
-  echo "<option value='dog'>Dog</option>";
-  echo "<option value='cat'>Cat</option>";
-  echo "<option value='bird'>Bird</option>";
-  echo "<option value='snake'>Snake</option>";
+  $allTypes = getAllPetTypes();
+  foreach ($allTypes as $type) {
+    $typeName = ucfirst($type['name']);
+    echo "<option value='$type[id]'>$typeName</option>";
+  }
   echo "</select>";
   echo '<input type="submit" value="Create Pet">';
   echo '</form>';

@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $hunger = getHunger($pet['id']);
 
   echo "<div>";
-  echo "<h2>Managing $pet[name]:</h2>";
+  echo "<h2>Currently Interacting With $pet[name]:</h2>";
   echo "<div class='box'>";
   echo "<h3>Food:</h3>";
   echo "<div>";
@@ -29,9 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "extremely hungry.";
   }
   echo "</div>";
-  $lastFeedTime = getLastActionDate("feed",$pet['id'])[0];
-  $lastFeed = date("d/m/Y - H:i", $lastFeedTime);
-  echo "<div>You last fed him $lastFeed.</div>";
+  echo "<div>You last fed them $hunger hours ago.</div>";
   echo '<form action="managePet.php" method="post">';
   echo "<input  type='hidden' name='type' value='feed'>";
   echo "<input  type='hidden' name='id' value=$pet[id]>";

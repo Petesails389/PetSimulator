@@ -61,9 +61,19 @@
     $result = $dbh->query("SELECT * FROM actions WHERE pet_id=$id AND action_type='$type'");
     return $result->fetchAll();
   }
-function getLastActionDate($type,$id) {
-  global $dbh;
-  $result = $dbh->query("SELECT MAX(date_time) FROM actions WHERE pet_id=$id AND action_type='$type'");
-  return $result->fetch();
-}
+  function getLastActionDate($type,$id) {
+    global $dbh;
+    $result = $dbh->query("SELECT MAX(date_time) FROM actions WHERE pet_id=$id AND action_type='$type'");
+    return $result->fetch();
+  }
+  function getPetType($id) {
+    global $dbh;
+    $result = $dbh->query("SELECT name FROM petTypes WHERE id=$id");
+    return $result->fetch()[0];
+  }
+  function getAllPetTypes() {
+    global $dbh;
+    $result = $dbh->query("SELECT * FROM petTypes");
+    return $result->fetchAll();
+  }
 ?>

@@ -12,6 +12,9 @@ echo "<h2>Your Pets:</h2>";
 if (count($pets) > 0){
   foreach ($pets as $pet){
     $birthday = date("d/m/Y", $pet['birthday']);
+    $type = getPetType($pet['type']);
+    $hunger = getHunger($pet['id']);
+    
     echo "<div class='box'>";
     echo "<div class='flex'>";
     echo "<h3>$pet[name]</h3>";
@@ -19,16 +22,15 @@ if (count($pets) > 0){
     echo '</form>';
     echo '<form  action="managePet.php" method="get">';
     echo "<input  type='hidden' name='id' value=$pet[id]>";
-    echo "<input  type='submit' value='Manage'>";
+    echo "<input  type='submit' value='Interact'>";
     echo '</form>';
     echo "</div>";
     echo "<div class='details' id='$pet[id]'>";
     echo "<h4>Info:</h4>";
-    echo "<div>$pet[name] is a $pet[type].</div>";
+    echo "<div>$pet[name] is a $type.</div>";
     echo "<div>$pet[name]'s birthday is $birthday.</div>";
     echo "<br>";
     echo "<h4>Statistics:</h4>";
-    $hunger = getHunger($pet['id']);
     echo "<div>Hunger: $hunger</div>";
     echo "<br>";
     echo "<h4>Actions:</h4>";
