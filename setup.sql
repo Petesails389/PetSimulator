@@ -8,9 +8,11 @@ CREATE TABLE pets(
   type INT NOT NULL,
   birthday INT NOT NULL,
   dead INT NOT NULL DEFAULT 0,
+  cause TEXT DEFAULT NULL,
+  death_date INT DEFAULT NULL,
   imortal INT NOT NULL DEFAULT 0
 );
-INSERT INTO pets (owner_id, name, type, birthday) VALUES (1, "twenty seven", 2, 1652981087);
+INSERT INTO pets (owner_id, name, type, birthday,imortal) VALUES (1, "twenty seven", 2, 1652981087, 1);
 
 DROP TABLE if exists actions;
 CREATE TABLE actions (

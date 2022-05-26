@@ -92,9 +92,9 @@
     $result = $dbh->query("SELECT * FROM petTypes");
     return $result->fetchAll();
   }
-function kill($id){
+function kill($id,$cause,$date){
   global $dbh;
-  $result = $dbh->query("UPDATE pets SET dead=1 WHERE id=$id;");
+  $result = $dbh->query("UPDATE pets SET dead=1, cause='$cause', death_date=$date WHERE id=$id;");
   return true;
 }
 ?>
