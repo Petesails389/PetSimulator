@@ -104,3 +104,6 @@ button.noBox:hover, button.noBox:active {
   border-color: #D23202;
 }
 
+.spacer {
+  flex-grow: 200
+}

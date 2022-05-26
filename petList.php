@@ -11,42 +11,57 @@ echo "<div>";
 echo "<h2>Your Pets:</h2>";
 if (count($pets) > 0){
   foreach ($pets as $pet){
-    $birthday = date("d/m/Y", $pet['birthday']);
-    $type = getPetType($pet['type']);
-    $hunger = getHunger($pet['id']);
-    
-    echo "<div class='box'>";
-    echo "<div class='flex'>";
-    echo "<h3>$pet[name]</h3>";
-    echo "<button id='lable$pet[id]' class='noBox' type='button' onclick='togglePetDetails($pet[id])'>show more</button>";
-    echo '</form>';
-    echo '<form  action="managePet.php" method="get">';
-    echo "<input  type='hidden' name='id' value=$pet[id]>";
-    echo "<input  type='submit' value='Interact'>";
-    echo '</form>';
-    echo "</div>";
-    echo "<div class='details' id='$pet[id]'>";
-    echo "<h4>Info:</h4>";
-    echo "<div>$pet[name] is a $type.</div>";
-    echo "<div>$pet[name]'s birthday is $birthday.</div>";
-    echo "<br>";
-    echo "<h4>Statistics:</h4>";
-    echo "<div>Hunger: $hunger</div>";
-    echo "<br>";
-    echo "<h4>Actions:</h4>";
-    echo "<div class='flex'>";
-    echo '<form  action="renamePet.php" method="get">';
-    echo "<input  type='hidden' name='id' value=$pet[id]>";
-    echo '<input  type="submit" value="Rename">';
-    echo '</form>';
-    echo '<form  action="removePet.php" method="post">';
-    echo "<input  type='hidden' name='id' value=$pet[id]>";
-    echo '<input  class="danger" type="submit" value="Delete">';
-    echo '</form>';
-    echo "</div>";
-    echo "</div>";
-    echo "</div>";
-    echo "<br>";
+    if (true) {
+      $birthday = date("d/m/Y", $pet['birthday']);
+      $type = getPetType($pet['type']);
+      $hunger = round(getHunger($pet['id']),1);
+      $weight = getWeight($pet['id']);
+      $fitness = round(getFitness($pet['id']),1);
+      $age = getAge($pet['id']);
+      $idealWeight = $type['healthy_weight']/1000;
+      
+      echo "<div class='box'>";
+      echo "<div class='flex'>";
+      echo "<h3>$pet[name]</h3>";
+      echo '</form>';
+      echo '<form  action="managePet.php" method="get">';
+      echo "<input  type='hidden' name='id' value=$pet[id]>";
+      echo "<input  type='submit' value='Interact'>";
+      echo '</form>';
+      echo "<div class='spacer'></div>";
+      echo "<button id='lable$pet[id]' class='noBox' type='button' onclick='togglePetDetails($pet[id])'>show more</button>";
+      echo "</div>";
+      echo "<div class='details' id='$pet[id]'>";
+      echo "<h4>Info:</h4>";
+      echo "<div>$pet[name] is a $type[name].</div>";
+      echo "<div>Their birthday is $birthday. They are $age days old.</div>";
+      echo "<div>They should weigh $idealWeight Kg.</div>";
+      echo "<br>";
+      echo "<h4>Raw Statistics:</h4>";
+      echo "<div>Hunger: $hunger hours since last feed.</div>";
+      echo "<div>Weight: $weight kg</div>";
+      echo "<div>Fitness: $fitness (Arbitrary value - defaults to 10)</div>";
+      if ($pet['dead']) {
+        echo "<div>Dead: True. Cause: Unknown.</div>";
+      } else {
+        echo "<div>Dead: fFalse. Cause: Null.</div>";
+      }
+      echo "<br>";
+      echo "<h4>Actions:</h4>";
+      echo "<div class='flex'>";
+      echo '<form  action="renamePet.php" method="get">';
+      echo "<input  type='hidden' name='id' value=$pet[id]>";
+      echo '<input  type="submit" value="Rename">';
+      echo '</form>';
+      echo '<form  action="removePet.php" method="post">';
+      echo "<input  type='hidden' name='id' value=$pet[id]>";
+      echo '<input  class="danger" type="submit" value="Delete">';
+      echo '</form>';
+      echo "</div>";
+      echo "</div>";
+      echo "</div>";
+      echo "<br>";
+    }
   }
 }
 else{

@@ -2,7 +2,9 @@
 include "init.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  createPet($_POST['petName'],$_POST['type']);
+  $petId = createPet($_POST['petName'],$_POST['type']);
+  addAction('feed', $petId);
+  addAction('excercise', $petId);
   header("location:/");
 } else{
   pageHeader();
