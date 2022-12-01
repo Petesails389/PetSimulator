@@ -1,58 +1,8 @@
 * {
   padding: 0px;
   margin: 0px;
-  border-color: #FFD60A;
 }
-
-body {
-  background:#000814;
-  color:#EBF5FF;
-  font-family: Arial, sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6{
-  margin: 5px;
-}
-div {
-  margin: 5px;
-}
-
-input, select, button {
-  background:#003566;
-  border-style: solid;
-  border-width: 2px;
-  color: #EBF5FF;
-  margin: 5px;
-  padding: 5px;
-}
-
-input:hover, input:focus {
-  color: #FFD60A;
-  background:#001D3D;
-}
-
-a:link, a:visited {
-  color: #EBF5FF;
-  background:#003566;
-}
-a:hover, a:active {
-  color: #FFD60A;
-  background:#001D3D;
-}
-
-button.noBox {
-  font-size: 12;
-  border-style: none;
-  text-decoration: underline;
-  background:#001D3D;
-}
-
-button.noBox:hover, button.noBox:active {
-  color: #FFD60A;
-}
-
 .header {
-  background:#001D3D;
   border-style: none none solid none;
   border-width: 2px;
   text-align: center;
@@ -60,54 +10,62 @@ button.noBox:hover, button.noBox:active {
   margin: 0px;
 }
 
-.content {
-  padding: 5px;
-  margin: 5px;
+nav {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 8px 32px;
+	border-bottom: 2px solid var(--black);
+	position: fixed;
+	top: 0;
+	background: var(--white);
+	z-index: 2;
+}
+.main {
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	margin: 128px auto;
+	margin-bottom: 0;
+	padding: 0 24px;
 }
 
-.nav {
-  display: inline-block;
-  border-style: solid;
-  border-width: 2px;
-  text-align: center;
-  padding: 5px;
-  margin: 5px;
-  text-decoration: none;
+main {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	padding: 0 24px;
 }
 
 .box {
-  background:#001D3D;
   padding: 5px;
   border-style: solid;
   border-width: 2px;
-  margin: 5px;
 }
 
 .boxRed {
-  background:#001D3D;
   padding: 5px;
   border-style: solid;
   border-width: 2px;
-  border-color: #D23202 !important;
   margin: 5px;
 }
 
-.flex {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0px;
-  margin: 0px;
+.actions {
+	display: flex;
+	gap: 16px;
+}
+
+.container {
+	display: flex;
+	gap: 32px;
+	flex-wrap: wrap;
 }
 
 .details {
   display: none;
   margin-left: 0px;
   padding-left: 0px;
-}
-
-.red {
-  border-color: #D23202;
 }
 
 .spacer {

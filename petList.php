@@ -8,7 +8,7 @@ $pets = getPets();
 pageHeader();
 pageStart();
 echo "<div>";
-echo "<h2>Your Pets:</h2>";
+echo "<h4>Your Pets:</h4>";
 if (count($pets) > 0){
   foreach ($pets as $pet){
     $birthday = date("d/m/Y", $pet['birthday']);
@@ -23,7 +23,7 @@ if (count($pets) > 0){
     $idealWeight = $type['healthy_weight']/1000;
 
     if ($pet['dead']==1) {
-      echo "<div class='boxRed'>";
+      echo "<card class='boxRed'>";
     } else {
       echo "<div class='box'>";
     }
@@ -55,14 +55,14 @@ if (count($pets) > 0){
     }
     echo "<br>";
     echo "<h4>Actions:</h4>";
-    echo "<div class='flex'>";
+    echo "<div class='Actions'>";
     echo '<form  action="renamePet.php" method="get">';
     echo "<input  type='hidden' name='id' value=$pet[id]>";
-    echo '<input  type="submit" value="Rename">';
+    echo '<button  class="yellow" type="submit" value="Rename">Rename</button>';
     echo '</form>';
     echo '<form  action="removePet.php" method="post">';
     echo "<input  type='hidden' name='id' value=$pet[id]>";
-    echo '<input  class="red" type="submit" value="Delete">';
+    echo '<button  class="pink" type="submit" value="Delete">Delete</button>';
     echo '</form>';
     echo "</div>";
     echo "</div>";
