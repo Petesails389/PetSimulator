@@ -11,4 +11,8 @@
   function getUserId() {
     return 1;
   }
+
+  function isAdmin($userID) {
+    return false;
+  }
 ?>

@@ -7,14 +7,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else{
   pageHeader();
   pageStart();
-  $pet = getPet($_GET['id']=1);
-  echo "<div>";
+  $pet = getPet($_GET['id']);
   echo "<h2>Rename $pet[name]:</h2>";
+  echo "<div class='flex'>";
   echo '<form action="renamePet.php" method="post">';
    echo "<input  type='hidden' name='id' value=$pet[id]>";
-  echo "<input type='text' name='petName' placeholder='Pet Name'>";
-  echo '<input type="submit" value="Rename Pet">';
+  echo "<input class='cyan' type='text' name='petName' placeholder='Pet Name'>";
+  echo '<button class = "pink" type="submit">Rename Pet</button>';
   echo '</form>';
+  echo "</div>";
   pageEnd();
 }
 

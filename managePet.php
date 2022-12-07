@@ -31,8 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   echo "<h2>Currently Interacting With $pet[name]:</h2>";
   if ($dead[0]) {
     echo "<div>$pet[name] is dead. :(</div>";
+    echo "</div>";
   } else {
-    echo "<div class='box'>";
+    echo "<div>";
     echo "<h3>Food:</h3>";
     echo "<div>";
     echo "<div>$pet[name] is ";
@@ -52,22 +53,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo '<form action="managePet.php" method="post">';
     echo "<input  type='hidden' name='type' value='feed'>";
     echo "<input  type='hidden' name='id' value=$pet[id]>";
-    echo "<input type='submit' value='Feed $pet[name]'>";
+    echo "<button  class='pink' type='submit' >Feed $pet[name]</button>";
     echo '</form>';
     echo "</div>";
+    echo "<hr>";
     echo "<h3>Activities:</h3>";
     echo "<div>";
     echo '<form action="managePet.php" method="post">';
     echo "<input  type='hidden' name='type' value='excercise'>";
     echo "<input  type='hidden' name='id' value=$pet[id]>";
-    echo "<input type='submit' value='Excercise with $pet[name]'>";
+    echo "<button  class='pink' type='submit'>Excercise with $pet[name]</button>";
     echo '</form>';
     echo '<form action="managePet.php" method="post">';
     echo "<input  type='hidden' name='type' value='play'>";
     echo "<input  type='hidden' name='id' value=$pet[id]>";
-    echo "<input type='submit' value='Play with $pet[name]'>";
+    echo "<button  class='pink' type='submit'>Play with $pet[name]</button>";
     echo '</form>';
     echo "</div>";
+    echo "</card>";
+    echo "<hr>";
     echo "<h3>Health:</h3>";
     echo "<div>";
     echo "<div>$pet[name] weighs $weight kg. They should weigh $idealWeight kg.</div>";
@@ -92,6 +96,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $happy = "extremely happy";
     }
     echo "<div>$pet[name] is $fit and $happy.</div>";
+    echo "<br>";
+    echo "</div>";
     echo "</div>";
     echo "</div>";
   }

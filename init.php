@@ -7,7 +7,7 @@ function pageHeader() {
   include "header.html";
 }
 function pageStart() {
-  include "pageStart.html";
+  include "pageStart.php";
 }
 function pageEnd() {
   include "pageEnd.html";

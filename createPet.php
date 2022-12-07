@@ -9,19 +9,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else{
   pageHeader();
   pageStart();
-  echo "<div>";
   echo "<h2>Create a new pet:</h2>";
+  echo "<div class='flex'>";
   echo '<form action="createPet.php" method="post">';
   echo "<input type='text' name='petName' placeholder='Pet Name'>";
-  echo "<select name='type' value='Type of Pet'>";
+  echo "<select class='cyan' name='type' value='Type of Pet'>";
   $allTypes = getAllPetTypes();
   foreach ($allTypes as $type) {
     $typeName = ucfirst($type['name']);
     echo "<option value='$type[id]'>$typeName</option>";
   }
   echo "</select>";
-  echo '<input type="submit" value="Create Pet">';
+  echo '<button class="pink" type="submit">Create Pet</button>';
   echo '</form>';
+  echo "</div>";
   pageEnd();
 }
 

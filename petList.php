@@ -7,9 +7,9 @@ $pets = getPets();
 
 pageHeader();
 pageStart();
-echo "<div>";
-echo "<h4>Your Pets:</h4>";
+echo "<h2>Your Pets:</h2>";
 if (count($pets) > 0){
+  echo "<div class='cardContainer'>";
   foreach ($pets as $pet){
     $birthday = date("d/m/Y", $pet['birthday']);
     $death = checkForDeath($pet['id']);
@@ -22,20 +22,19 @@ if (count($pets) > 0){
     $age = getAge($pet['id']);
     $idealWeight = $type['healthy_weight']/1000;
 
+
     if ($pet['dead']==1) {
-      echo "<card class='boxRed'>";
+      echo "<card class='purple' onclick='togglePetDetails($pet[id])'>";
     } else {
-      echo "<div class='box'>";
+      echo "<card class='cyan' onclick='togglePetDetails($pet[id])'>";
     }
-    echo "<div class='flex'>";
+    echo "<div class='cardContents'>";
+    echo "<div class='petName'>";
     echo "<h3>$pet[name]</h3>";
-    echo '</form>';
     echo '<form  action="managePet.php" method="get">';
     echo "<input  type='hidden' name='id' value=$pet[id]>";
-    echo "<input  type='submit' value='Interact'>";
+    echo "<button  class='cyan' type='submit'>Interact</button>";
     echo '</form>';
-    echo "<div class='spacer'></div>";
-    echo "<button id='lable$pet[id]' class='noBox' type='button' onclick='togglePetDetails($pet[id])'>show more</button>";
     echo "</div>";
     echo "<div class='details' id='$pet[id]'>";
     echo "<h4>Info:</h4>";
@@ -49,31 +48,40 @@ if (count($pets) > 0){
     echo "<div>Fitness: $fitness (Arbitrary value - defaults to 10)</div>";
     echo "<div>Happiness: $happiness (Arbitrary value - defaults to 10)</div>";
     if ($pet['dead']) {
-      echo "<div>Dead: True.<div> </div>Cause: $pet[cause].<div> </div>CDate: $deathday.</div>";
+      echo "<div>Dead: yes. :( I'm sorry for you're loss.<div> </div>Cause: $pet[cause].<div> </div>Date: $deathday.</div>";
     } else {
-      echo "<div>Dead: False. </div>";
+      echo "<div>Dead: Nope. :) Good on you! </div>";
     }
     echo "<br>";
     echo "<h4>Actions:</h4>";
     echo "<div class='Actions'>";
     echo '<form  action="renamePet.php" method="get">';
     echo "<input  type='hidden' name='id' value=$pet[id]>";
-    echo '<button  class="yellow" type="submit" value="Rename">Rename</button>';
+    echo '<button  class="pink" type="submit">Rename</button>';
+    echo '</form>';
+    echo '<form  action="killPet.php" method="post">';
+    echo "<input  type='hidden' name='id' value=$pet[id]>";
+    echo '<button  class="pink" type="submit" ';
+    if ($pet['dead']){
+      echo"disabled=''";
+    }
+    echo ">Kill</button>'";
     echo '</form>';
     echo '<form  action="removePet.php" method="post">';
     echo "<input  type='hidden' name='id' value=$pet[id]>";
-    echo '<button  class="pink" type="submit" value="Delete">Delete</button>';
+    echo '<button  class="pink" type="submit">Delete</button>';
     echo '</form>';
     echo "</div>";
     echo "</div>";
     echo "</div>";
+    echo "</card>";
     echo "<br>";
   }
+  echo "</div>";
 }
 else{
   echo "<div class='content'>You have no pets!</div>";
 }
-echo "</div>";
 pageEnd();
 $dbh = null;
 ?>

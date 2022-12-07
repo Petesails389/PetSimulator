@@ -2,12 +2,33 @@
   padding: 0px;
   margin: 0px;
 }
-.header {
-  border-style: none none solid none;
-  border-width: 2px;
-  text-align: center;
-  padding: 5px;
-  margin: 0px;
+
+html {
+	height: 100%;
+}
+
+body {
+	display: block;
+	align-items: center;
+	height: 100%;
+}
+
+.main {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	float: none;
+	position: static;
+	align-items: center;
+	height: 100%;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	flex-grow: 1;
+	align-self: center;
 }
 
 nav {
@@ -15,59 +36,64 @@ nav {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 8px 32px;
+	padding: 16px;
 	border-bottom: 2px solid var(--black);
-	position: fixed;
-	top: 0;
 	background: var(--white);
 	z-index: 2;
 }
-.main {
+
+.navButtons {
 	display: flex;
-	flex-direction: column;
-	width: 80%;
-	margin: 128px auto;
-	margin-bottom: 0;
-	padding: 0 24px;
+	align-items: center;
+	gap: 	8px;
 }
 
-main {
+nav .title {
 	display: flex;
-	flex-direction: column;
-	gap: 32px;
-	padding: 0 24px;
+	align-items: center;
+	gap: 8px;
 }
 
-.box {
-  padding: 5px;
-  border-style: solid;
-  border-width: 2px;
+.end {
+    width:100%;
+	padding: 10px;
+	border-top: 2px solid var(--black);
+	background: var(--white);
+}
+.end p, .end a, .end mark{
+	font-size: 12px;
+	line-height: 20px;
 }
 
-.boxRed {
-  padding: 5px;
-  border-style: solid;
-  border-width: 2px;
-  margin: 5px;
-}
-
-.actions {
+.cardContainer {
 	display: flex;
-	gap: 16px;
-}
-
-.container {
-	display: flex;
-	gap: 32px;
 	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.cardContents {
+	display: flex;
+	flex-direction: column;
+	padding: 12px;
+}
+
+card {
+	width: 100%;
+	height: fit-content;
 }
 
 .details {
   display: none;
-  margin-left: 0px;
-  padding-left: 0px;
 }
 
-.spacer {
-  flex-grow: 200
+.petName, .Actions{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.flex form{
+	display: flex;
+	align-items: center;
+	gap: 	16px;
 }
