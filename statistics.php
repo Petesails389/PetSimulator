@@ -13,7 +13,7 @@
     $age = time() - getPet($id)['birthday'];
     return round($age/60/60/24);
   }
-  function getAverageActivityTime($id, $type, $days=7, $assumeNow = false){
+  function getAverageActivityTime($id, $type, $days=30, $assumeNow = true){
     $timestamp = time() - (60*60*24*$days);
     $allActivities = getRecentActionDates($type, $id, $timestamp);
     $count = count($allActivities);
@@ -24,7 +24,7 @@
       $latest = $allActivities[$count][0];
     }
     $age = getAge($id);
-    if ($age >= 7 ) { 
+    if ($age >= $days) { 
       $first = $allActivities[0][0];
       if (8*60*60 > (time()-$days*60*60*24)-$first){
         $first = time()-$days*60*60*24;
@@ -44,7 +44,7 @@
     }
     return abs($average);
   }
-  function getWeight($id, $days=7) {
+  function getWeight($id, $days=30) {
     $feedTime = 8;
     $pet = getPet($id);
     $age = getAge($id);
@@ -65,7 +65,7 @@
     }
     return round($weight,2);
   }
-  function getFitness($id, $days=7) {
+  function getFitness($id, $days=21) {
     $timestamp = time() - (60*60*24*$days);
     $average = getAverageActivityTime($id, "excercise", $days)/60/60;
     if ($average != 0) {
@@ -90,7 +90,7 @@
     $type = getPetType($pet['type']);
     $hunger = getHunger($id);
     $weight = getWeight($id);
-    $age = max(getAge($id),7);
+    $age = max(min(365,getAge($id)),30);
     $totalWeight = getWeight($id,$age);
     $idealWeight = $type['healthy_weight']/1000;;
     $dead = false;
@@ -98,7 +98,7 @@
     $date = null;
 
     if ($pet['dead'] == 0 && $pet['imortal'] == 0){
-      if ($hunger > 48) {
+      if ($hunger > 500) {
         $dead = true;
         $cause = "starvation";
         $date = time();
@@ -114,13 +114,13 @@
         $date = time();
       }
     } else {
-    if ($pet['dead'] == 0){
-      $dead = false;
-    } else {
-      $dead = true;
-    }
-    $cause = $pet['cause'];;
-    $date = $pet['death_date'];
+      if ($pet['dead'] == 0){
+        $dead = false;
+      } else {
+        $dead = true;
+      }
+      $cause = $pet['cause'];;
+      $date = $pet['death_date'];
     }
     return array($dead,$cause,$date);
   }
