@@ -1,5 +1,5 @@
 <?php
-  $dir = 'sqlite:/home/runner/PetSim/database.sqlite';
+  $dir = 'sqlite:./database.sqlite';
   $dbh  = new PDO($dir) or die("cannot open the database");
 
   function getPets() {
