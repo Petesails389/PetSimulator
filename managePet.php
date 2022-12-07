@@ -28,35 +28,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
   
   echo "<div>";
-  echo "<h2>Currently Interacting With $pet[name]:</h2>";
+  echo "<h2>You're Playing With $pet[name]:</h2>";
   if ($dead[0]) {
     echo "<div>$pet[name] is dead. :(</div>";
     echo "</div>";
   } else {
+    //hunger - time since feed
+    $percent = ($hunger / 48) * 100; //anothing longer than 48 hours will display max hunger
+    $averageExcercise = getAverageActivityTime($pet['id'], "excercise")/60/60;
+    //$p1 = min($percent,min($averageExcercise,8)); //displays the first bit in a lighter colour to show that it's within the healthy range
+    //$p2 = $percentage-$p1;
+    echo "<div class='statistic'>";
+    echo "<h4>Time since Feed:</h4>";
+    echo "<div class='meter'>";
+    echo "<div class='purple-light' id='fill' style='width:$percent%;'></div>";
+    echo "<div class='purple' id='fill' style='width:$percent%;'></div></div></div>";
+
+    //fitness
+    $percent = ($fitness / 10) * 100; //max display is 10 for now as that is default anything higher only affects weight
+    echo "<div class='statistic'>";
+    echo "<h4>Fitness:</h4>";
+    echo "<div class='meter'>";
+    echo "<div class='purple' id='fill' style='width:$percent%;'></div></div></div>";
+
+    //happiness
+    $percent = ($happiness / 30) * 100; //30 is max here if happiness stat every changes
+    echo "<div class='statistic'>";
+    echo "<h4>Happiness:</h4>";
+    echo "<div class='meter'>";
+    echo "<div class='purple' id='fill' style='width:$percent%;'></div></div></div>";
+
+
+    echo "<hr>";
+
+    echo "<h3>Food And Drink</h3>";
     echo "<div>";
-    echo "<h3>Food:</h3>";
-    echo "<div>";
-    echo "<div>$pet[name] is ";
-    if ($hunger < 4) {
-      echo "not hungry.</div>";
-    } elseif ($hunger >= 4 && $hunger < 8) {
-      echo "slightly hungry.</div>";
-    } elseif ($hunger >= 8 && $hunger < 16){
-      echo "hungry.</div>";
-    } elseif ($hunger >= 16 && $hunger < 24) {
-      echo "very hungry.</div>";
-    } else {
-      echo "extremely hungry.</div>";
-    }
-    $displayHunger = round($hunger,1);
-    echo "<div>You last fed them $displayHunger hours ago.</div>";
     echo '<form action="managePet.php" method="post">';
     echo "<input  type='hidden' name='type' value='feed'>";
     echo "<input  type='hidden' name='id' value=$pet[id]>";
     echo "<button  class='pink' type='submit' >Feed $pet[name]</button>";
     echo '</form>';
     echo "</div>";
+
     echo "<hr>";
+
     echo "<h3>Activities:</h3>";
     echo "<div>";
     echo '<form action="managePet.php" method="post">';
@@ -71,7 +86,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo '</form>';
     echo "</div>";
     echo "</card>";
+
     echo "<hr>";
+
     echo "<h3>Health:</h3>";
     echo "<div>";
     echo "<div>$pet[name] weighs $weight kg. They should weigh $idealWeight kg.</div>";
@@ -97,7 +114,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     echo "<div>$pet[name] is $fit and $happy.</div>";
     echo "<br>";
-    echo "</div>";
     echo "</div>";
     echo "</div>";
   }

@@ -24,9 +24,9 @@ if (count($pets) > 0){
 
 
     if ($pet['dead']==1) {
-      echo "<card class='purple' onclick='togglePetDetails($pet[id])'>";
+      echo "<card onclick='togglePetDetails($pet[id])'>";
     } else {
-      echo "<card class='cyan' onclick='togglePetDetails($pet[id])'>";
+      echo "<card class='purple' onclick='togglePetDetails($pet[id])'>";
     }
     echo "<div class='cardContents'>";
     echo "<div class='petName'>";

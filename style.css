@@ -36,7 +36,7 @@ nav {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 16px;
+	padding: 8px;
 	border-bottom: 2px solid var(--black);
 	background: var(--white);
 	z-index: 2;
@@ -86,7 +86,7 @@ card {
   display: none;
 }
 
-.petName, .Actions{
+.petName, .Actions {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -96,4 +96,63 @@ card {
 	display: flex;
 	align-items: center;
 	gap: 	16px;
+}
+
+.statistic{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.statistic h4{
+	flex-grow: 2;
+}
+
+.meter {
+	display: flex;
+	flex-direction: row;
+	width: 70%;
+	height: 32px;
+	background-color: var(--white);
+	border-radius: 2px;
+	outline: 2px solid var(--black);
+	margin: auto auto auto 16px;
+}
+
+.meter #fill {
+	width: 50%;
+	height: 100%;
+	background-color: var(--gray);
+}
+
+.meter #fill.cyan {
+	background-color: var(--cyan-normal);
+}
+.meter #fill.pink {
+	background-color: var(--pink-normal);
+}
+.meter #fill.yellow {
+	background-color: var(--cyyellowan-normal);
+}
+.meter #fill.blue {
+	background-color: var(--cybluean-normal);
+}
+.meter #fill.purple {
+	background-color: var(--purple-normal);
+}
+.meter #fill.cyan-light {
+	background-color: var(--cyan-light);
+}
+.meter #fill.pink-light {
+	background-color: var(--pink-light);
+}
+.meter #fill.yellow-light {
+	background-color: var(--cyyellowan-light);
+}
+.meter #fill.blue-light {
+	background-color: var(--cybluean-light);
+}
+.meter #fill.purple-light {
+	background-color: var(--purple-light);
 }

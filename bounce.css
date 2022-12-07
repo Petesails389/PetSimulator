@@ -95,6 +95,9 @@ button:disabled:after, button:disabled:hover:after, button.disabled:focus-visibl
   transform: none;
 }
 
+meter {
+	width: 400px;
+}
 
 h1 {
 	font-size: 64px;

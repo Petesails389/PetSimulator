@@ -2,7 +2,7 @@
 <div class="main">
   <nav>
     <div class="title">
-      <h2>Welcome to Pet Simulator!</h2>
+      <h3>Welcome to Pet Simulator!</h3>
     </div>
     <div class="navButtons">
       <button class="cyan" onclick='window.location.href="petList.php";'>Your Pets</button>
@@ -13,7 +13,7 @@
           echo 'disabled=""';
         }
       ?>
-      >ADMIN</button>'
+      >ADMIN</button>
     </div>
   </nav>
   <div class="content">
